@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)https://seinecle.github.io/vosviewer-tutorials/generated-slides/importing-en.html -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Clément Levallois">
+    <title>A tutorial for vosviewer</title>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+        name="viewport">
+    <link href="reveal.css" rel="stylesheet">
+    <link rel="stylesheet" href="white.css" id="theme">
+    <style>
+        /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+        /*pre.CodeRay {background-color:#f7f7f8;}*/
+        .CodeRay .line-numbers {
+            border-right: 1px solid #d8d8d8;
+            padding: 0 0.5em 0 .25em
+        }
+
+        .CodeRay span.line-numbers {
+            display: inline-block;
+            margin-right: .5em;
+            color: rgba(0, 0, 0, .3)
+        }
+
+        .CodeRay .line-numbers strong {
+            color: rgba(0, 0, 0, .4)
+        }
+
+        table.CodeRay {
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 0;
+            border: 0;
+            background: none
+        }
+
+        table.CodeRay td {
+            vertical-align: top;
+            line-height: 1.45
+        }
+
+        table.CodeRay td.line-numbers {
+            text-align: right
+        }
+
+        table.CodeRay td.line-numbers>pre {
+            padding: 0;
+            color: rgba(0, 0, 0, .3)
+        }
+
+        table.CodeRay td.code {
+            padding: 0 0 0 .5em
+        }
+
+        table.CodeRay td.code>pre {
+            padding: 0
+        }
+
+        .CodeRay .debug {
+            color: #fff !important;
+            background: #000080 !important
+        }
+
+        .CodeRay .annotation {
+            color: #007
+        }
+
+        .CodeRay .attribute-name {
+            color: #000080
+        }
+
+        .CodeRay .attribute-value {
+            color: #700
+        }
+
+        .CodeRay .binary {
+            color: #509
+        }
+
+        .CodeRay .comment {
+            color: #998;
+            font-style: italic
+        }
+
+        .CodeRay .char {
+            color: #04d
+        }
+
+        .CodeRay .char .content {
+            color: #04d
+        }
+
+        .CodeRay .char .delimiter {
+            color: #039
+        }
+
+        .CodeRay .class {
+            color: #458;
+            font-weight: bold
+        }
+
+        .CodeRay .complex {
+            color: #a08
+        }
+
+        .CodeRay .constant,
+        .CodeRay .predefined-constant {
+            color: #008080
+        }
+
+        .CodeRay .color {
+            color: #099
+        }
+
+        .CodeRay .class-variable {
+            color: #369
+        }
+
+        .CodeRay .decorator {
+            color: #b0b
+        }
+
+        .CodeRay .definition {
+            color: #099
+        }
+
+        .CodeRay .delimiter {
+            color: #000
+        }
+
+        .CodeRay .doc {
+            color: #970
+        }
+
+        .CodeRay .doctype {
+            color: #34b
+        }
+
+        .CodeRay .doc-string {
+            color: #d42
+        }
+
+        .CodeRay .escape {
+            color: #666
+        }
+
+        .CodeRay .entity {
+            color: #800
+        }
+
+        .CodeRay .error {
+            color: #808
+        }
+
+        .CodeRay .exception {
+            color: inherit
+        }
+
+        .CodeRay .filename {
+            color: #099
+        }
+
+        .CodeRay .function {
+            color: #900;
+            font-weight: bold
+        }
+
+        .CodeRay .global-variable {
+            color: #008080
+        }
+
+        .CodeRay .hex {
+            color: #058
+        }
+
+        .CodeRay .integer,
+        .CodeRay .float {
+            color: #099
+        }
+
+        .CodeRay .include {
+            color: #555
+        }
+
+        .CodeRay .inline {
+            color: #000
+        }
+
+        .CodeRay .inline .inline {
+            background: #ccc
+        }
+
+        .CodeRay .inline .inline .inline {
+            background: #bbb
+        }
+
+        .CodeRay .inline .inline-delimiter {
+            color: #d14
+        }
+
+        .CodeRay .inline-delimiter {
+            color: #d14
+        }
+
+        .CodeRay .important {
+            color: #555;
+            font-weight: bold
+        }
+
+        .CodeRay .interpreted {
+            color: #b2b
+        }
+
+        .CodeRay .instance-variable {
+            color: #008080
+        }
+
+        .CodeRay .label {
+            color: #970
+        }
+
+        .CodeRay .local-variable {
+            color: #963
+        }
+
+        .CodeRay .octal {
+            color: #40e
+        }
+
+        .CodeRay .predefined {
+            color: #369
+        }
+
+        .CodeRay .preprocessor {
+            color: #579
+        }
+
+        .CodeRay .pseudo-class {
+            color: #555
+        }
+
+        .CodeRay .directive {
+            font-weight: bold
+        }
+
+        .CodeRay .type {
+            font-weight: bold
+        }
+
+        .CodeRay .predefined-type {
+            color: inherit
+        }
+
+        .CodeRay .reserved,
+        .CodeRay .keyword {
+            color: #000;
+            font-weight: bold
+        }
+
+        .CodeRay .key {
+            color: #808
+        }
+
+        .CodeRay .key .delimiter {
+            color: #606
+        }
+
+        .CodeRay .key .char {
+            color: #80f
+        }
+
+        .CodeRay .value {
+            color: #088
+        }
+
+        .CodeRay .regexp .delimiter {
+            color: #808
+        }
+
+        .CodeRay .regexp .content {
+            color: #808
+        }
+
+        .CodeRay .regexp .modifier {
+            color: #808
+        }
+
+        .CodeRay .regexp .char {
+            color: #d14
+        }
+
+        .CodeRay .regexp .function {
+            color: #404;
+            font-weight: bold
+        }
+
+        .CodeRay .string {
+            color: #d20
+        }
+
+        .CodeRay .string .string .string {
+            background: #ffd0d0
+        }
+
+        .CodeRay .string .content {
+            color: #d14
+        }
+
+        .CodeRay .string .char {
+            color: #d14
+        }
+
+        .CodeRay .string .delimiter {
+            color: #d14
+        }
+
+        .CodeRay .shell {
+            color: #d14
+        }
+
+        .CodeRay .shell .delimiter {
+            color: #d14
+        }
+
+        .CodeRay .symbol {
+            color: #990073
+        }
+
+        .CodeRay .symbol .content {
+            color: #a60
+        }
+
+        .CodeRay .symbol .delimiter {
+            color: #630
+        }
+
+        .CodeRay .tag {
+            color: #008080
+        }
+
+        .CodeRay .tag-special {
+            color: #d70
+        }
+
+        .CodeRay .variable {
+            color: #036
+        }
+
+        .CodeRay .insert {
+            background: #afa
+        }
+
+        .CodeRay .delete {
+            background: #faa
+        }
+
+        .CodeRay .change {
+            color: #aaf;
+            background: #007
+        }
+
+        .CodeRay .head {
+            color: #f8f;
+            background: #505
+        }
+
+        .CodeRay .insert .insert {
+            color: #080
+        }
+
+        .CodeRay .delete .delete {
+            color: #800
+        }
+
+        .CodeRay .change .change {
+            color: #66f
+        }
+
+        .CodeRay .head .head {
+            color: #f4f
+        }
+    </style>
+    <link href="zenburn.css" rel="stylesheet">
+    <script>document.write('<link rel="stylesheet" href="reveal.js-3.1.0/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');</script>
+    <link rel="stylesheet" href="paper.css" type="text/css" media="print">
+</head>
+
+<body style="transition: -webkit-transform 0.8s;">
+    <div class="reveal linear center" role="application" data-transition-speed="default"
+        data-background-transition="fade">
+        <div class="slides" style="width: 960px; height: 700px; zoom: 0.893571;">
+            <section class="title present" style="top: 0px; display: block;">
+                <h1>Tutorial de VOSviewer</h1>
+                <div class="preamble">
+                    <div class="paragraph">
+                        <p>Fecha: 2-08-24</p>
+                    </div>
+                    <div class="imageblock stretch" style="text-align: center"><img src="vosviewer-logo.png"
+                            alt="vosviewer logo" width="450">
+                    </div>
+                </div>
+                <p class="author"><small>Camila Escudero, tomado de Clément Levallois</small></p>
+            </section>
+            <section id="__escape_or_o_to_see_all_sides_f11_for_full_screen_s_for_speaker_notes" hidden=""
+                aria-hidden="true" class="future" style="top: 190.5px; display: block;">
+                <h2>Presionar 'o' o 'Escape' para ver todas las diapositivas, 'F11' para pantalla completa</h2>
+            </section>
+            <section id="_presentation_of_this_tutorial" hidden="" aria-hidden="true" class="future"
+                style="top: 263.5px; display: block;">
+                <h2>Presentación de este tutorial</h2>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Este tutorial explica como crear un mapa semántico como este:</p>
+                </div>
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-1-en.png" alt="vw 1 en" height="100%"></div>
+                <div class="title">Figura 1. un mapa creado con VOSviewer</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>VOSviewer es un software desarrollado por Nees Jan van Eck y Ludo Waltman, investigadores en CWTS
+                        Leiden de la
+                        Universidad de Leiden.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>El software fue creado para el análisis de datos bibliométricos (estudio científico de la
+                        actividad científica), pero el mismo tiene una relevancia más amplia</p>
+                </div>
+                <div class="paragraph">
+                    <p>VOSviewer es <strong>particularmente bueno produciendo mapas semánticos</strong>
+                        de
+                        cualquier
+                        tipo, no solo de sets de datos bibliométricos.</p>
+                </div>
+            </section>
+            <section id="_importing_a_dataset" hidden="" aria-hidden="true" class="future"
+                style="top: 330px; display: none;">
+                <h2>Importar un set de datos</h2>
+                <div class="paragraph">
+                    <p>Se pueden usar tres métodos:</p>
+                </div>
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>Importar datos de naturaleza bibliométrica (Web of Knowledge, Scopus, Medline
+                                o RIS)</p>
+                        </li>
+                        <li>
+                            <p>importar un texto, donde cada párrafo se considera como una "unidad de texto" para
+                                computar
+                                co-occurrencias.</p>
+                        </li>
+                        <li>
+                            <p>Importar tus propias networks (creadas por ejemplo con Gephi, etc.)</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="paragraph">
+                    <p>Veamos como funcionan los dos primeros métodos.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>1. Importar set de datosbibliométricos (WoK, Scopus, etc.)</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Necesitamos un set de datos bibliométricos para practicar.</p>
+                </div>
+                <div class="paragraph">
+                    <p><a href="https://seinecle.github.io/vosviewer-tutorials/resources/pubmed_medline.zip">Descargue
+                            este archivo zip</a> y extraigalo en su computadora.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>El archivo <code>pubmed_medline.txt</code> dentro del zip contiene 1484 artículos de
+                        investigación de
+                        la base de datos PubMed de reportes científicos, encontrados al realizar esta búsqueda:</p>
+                </div>
+                <div class="paragraph">
+                    <p>"social neuroscience" OR "neuroeco*" OR "decision neuroscience"</p>
+                </div>
+                <div class="paragraph">
+                    <p>→ La búsqueda puede ser <a
+                            href="https://www.ncbi.nlm.nih.gov/pubmed?term=(%22social%20neuroscience%22%20OR%20%22neuroeco*%22%20OR%20%22decision%20neuroscience%22)">vista
+                            aquí</a>.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-2-en_New.png" alt="vw 2 en New" height="100%"></div>
+                <div class="title">Figura 2. Siga al asistente para subir datos bibliométricos - 1</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Prepare su archivo <code>pubmed_medline.txt</code> como se indica a continuación:</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-3-en_New.png" alt="vw 3 en New" height="100%"></div>
+                <div class="title">Figura 3. Siga al asistente para subir datos bibliométricos - 2</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>En este paso debes elegir que tipo de network te interesa.</p>
+                </div>
+                <div class="dlist">
+                    <dl>
+                        <dt class="hdlist1">TIP</dt>
+                        <dd>
+                            <p>Cuidado, una network de co-occurrencias de palabras clave no usa los abstracts de las
+                                entradas bibliograficas, sino sólo las palabras clave indicadas por los autores o el
+                                editor.
+                                Esto típicamente es mucho menos informativo. Existen otras formas en VOSviewer para
+                                trabajar
+                                con abstracts.</p>
+                        </dd>
+                    </dl>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-4-en_New.png" alt="vw 4 en New" height="100%"></div>
+                <div class="title">Figura 4. Siga al asistente para subir datos bibliométricos - 3</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p><strong>Full Counting:</strong> cada ocurrencia de un elemento (un término, un autor, una
+                        publicación) se cuenta
+                        individualmente.
+                        Por ejemplo, si un autor tiene 10 publicaciones y cada una de ellas tiene 5 citas, el número
+                        total de citas contadas para ese autor sería 50 (10 publicaciones × 5 citas cada una)</p>
+                </div>
+                <div class="paragraph">
+                    <p><strong>Binary Counting:</strong> solo se cuenta la presencia o ausencia de un elemento, sin
+                        importar cuántas
+                        veces aparece. Por ejemplo,
+                        si un autor tiene 10 publicaciones y cada una con 5 citas, el n° de citas
+                        contadas para ese autor sería 10, ya que cada publicación se cuenta solo una vez.
+                        Ventaja: Elimina el sesgo causado por la frecuencia de ocurrencia, enfocándose en la simple
+                        presencia de los elementos. Evita que los elementos muy frecuentes dominen el
+                        análisis.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>Función del archivo thesaurus:</h4>
+                <div class="paragraph">
+                    <p>Normalización de Términos: Ayuda a unificar diferentes variaciones de un mismo término. Por
+                        ejemplo, los términos "AI", "A.I.", "Artificial Intelligence" pueden ser tratados como uno solo.
+                    </p>
+                    <p>Agrupación de Sinónimos: Agrupa términos sinónimos bajo una misma etiqueta. Por ejemplo, "cáncer
+                        de mama" y "neoplasia mamaria" pueden ser tratados como equivalentes.</p>
+                    <p>Desambiguación de Términos: Distingue entre términos que pueden tener múltiples significados.
+                        Por ejemplo, "Java" (lenguaje de programación) y "Java" (isla en Indonesia) pueden ser
+                        diferenciados.
+                    </p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h4>Estructura de un archivo thesaurus:</h4>
+                <div class="paragraph">
+                    <p>
+                        Es un texto plano, donde cada línea contiene una pareja de términos. El formato puede variar
+                        según la
+                        aplicación, pero a menudo se presenta así:</p>
+                    <p><code>Término original | Término normalizado</code></p>
+                    <p>Ejemplo:</p>
+                    <p><code>AI | Artificial Intelligence</code></p>
+                    <p><code>A.I. | Artificial Intelligence</code></p>
+                    <p><code>Python|Python (programming language)</code></p>
+                    <p><code>Python|Python (snake)</code></p>
+                </div>
+            </section>
+
+
+
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Eligiendo la opción de autores, hay que decidir que tan frecuentemente un autor deberia aparecer
+                        en el dataset para ser incluido en la visualización.
+                        Aquí, quienes tienen autoría de menos de 5 papers en la colección quedarán afuera.</p>
+                </div>
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-5-en.png" alt="vw 5 en" height="100%"></div>
+                <div class="title">Figura 5. Siga al asistente para subir datos bibliométricos - 4</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Aquí puedes decidir que los autores que están débilmente conectados con otros (porque no
+                        coautoraron mucho) pueden ser excluidos.</p>
+                </div>
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-6-en.png" alt="vw 6 en" height="100%"></div>
+                <div class="title">Figura 6. Siga al asistente para subir datos bibliométricos - 5</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>La siguiente pantalla es una tabla para recapitular qué autores se van a incluir en la
+                        visualización.
+                    </p>
+                </div>
+                <div class="paragraph">
+                    <p>Notamos que hay duplicados (<code>luo yj</code> y <code>luo y</code>), lo que significa
+                        que deberíamos haber usado thesaurus para unirlos anteriormente.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-7-en.png" alt="vw 7 en" height="100%"></div>
+                <div class="title">Figura 7. Siga al asistente para subir datos bibliométricos - 6</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>El último paso del asistente es una invitación para mostrar solo el grupo más grande de autores
+                        conectados. Grupos más pequeños, aislados del grupo grande, serían descartados.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Clickear en "No" asegura que veamos todos los grupos.</p>
+                </div>
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-8-en.png" alt="vw 8 en" height="100%"></div>
+                <div class="title">Figura 8. Siga al asistente para subir datos bibliométricos - 7</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>El resultado es una network hecha de grupos de autores y sus conexiónes, correspondiendo al
+                        hecho de que ellos co-autorearon papers.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Los nodos más grandes representan autores con más publicaciónes.</p>
+                </div>
+                <div class="paragraph">
+                    <p>El fondo puede ser cambiado a negro - puede facilitar la lectura.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-9-en_New.png" alt="vw 9 en New" height="100%"></div>
+                <div class="title">Figura 9. Siga al asistente para subir datos bibliométricos - 8</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Antes de entrar en detalles de visualización, veremos como importar otros tipos de
+                        fuentes de datos:</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>2. Importar un archivo de texto (de naturaleza bibliométrica o no)</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Necesitamos un dataset para practicar.</p>
+                </div>
+                <div class="paragraph">
+                    <p>El conjunto de datos debe ser un único archivo de texto, donde cada unidad de texto <strong>es un
+                            párrafo</strong>.
+                        La red se formará con los términos más frecuentes en la red. Los términos que aparezcan en los
+                        mismos párrafos estarán conectados.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Vea <a
+                            href="https://seinecle.github.io/gephi-tutorials/generated-html/working-with-text-en.html#_computing_connections_edges_in_the_network">esta
+                            página</a> para más precisiones en unidades de texto / párrafo.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p><a href="https://seinecle.github.io/vosviewer-tutorials/resources/pubmed_abstracts.zip">descargue
+                            este archivo zip </a> y extraiga su contenido en su computadora.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>El archivo <code>pubmed_abstracts.txt</code> dentro del zip contiene 1484 abstracts (pequeños
+                        resumenes) de papers de la abse de datos PubMed, encontrados al realizar esta bísqueda:</p>
+                </div>
+                <div class="paragraph">
+                    <p>"social neuroscience" OR "neuroeco*" OR "decision neuroscience"</p>
+                </div>
+                <div class="paragraph">
+                    <p>→ La búsqueda puede ser vista en: <a
+                            href="https://www.ncbi.nlm.nih.gov/pubmed?term=(%22social%20neuroscience%22%20OR%20%22neuroeco*%22%20OR%20%22decision%20neuroscience%22)">online
+                            here</a>.
+                        (la búsqueda devuelve más de 1484 resultados, algunos artículos no titenen abstract).</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Como nota al margen, estos resúmenes se extrajeron de los registros de PubMed de la siguiente
+                        manera:</p>
+                </div>
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>Instalando Anaconda, una herramienta para Python con muchas cosas útiles en ella</p>
+                        </li>
+                        <li>
+                            <p>Instalando Metaknowledge, una herramienta bibliométrica de Python</p>
+                        </li>
+                        <li>
+                            <p>Corriendo esto en Jupyter notebook:</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="listingblock">
+                    <div class="content">
+                        <pre
+                            class="CodeRay"><code class="Python language-Python"><span class="keyword">import</span> <span class="include">metaknowledge</span> <span class="keyword">as</span> mk
+<span class="keyword">import</span> <span class="include">networkx</span> <span class="keyword">as</span> nx
+<span class="keyword">import</span> <span class="include">matplotlib.pyplot</span> <span class="keyword">as</span> plt
+%matplotlib inline
+<span class="keyword">import</span> <span class="include">metaknowledge.contour</span> <span class="keyword">as</span> mkv
+<span class="keyword">import</span> <span class="include">pandas</span>
+
+RC = mk.RecordCollection(<span class="string"><span class="delimiter">"</span><span class="content">pubmed_medline.txt</span><span class="delimiter">"</span></span>)
+<span class="keyword">for</span> R <span class="keyword">in</span> RC:
+    <span class="keyword">if</span> <span class="string"><span class="delimiter">'</span><span class="content">AB</span><span class="delimiter">'</span></span> <span class="keyword">in</span> R.keys():
+        print(R[<span class="string"><span class="delimiter">'</span><span class="content">AB</span><span class="delimiter">'</span></span>])
+        print(<span class="string"><span class="delimiter">'</span><span class="char">\n</span><span class="delimiter">'</span></span>)</code></pre>
+                    </div>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-10-en.png" alt="vw 10 en" height="100%"></div>
+                <div class="title">Figura 10. Uso de Metaknowledge para extraer abstracts de los registros</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Seguimos al asistente que creará el mapa semántico:</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-11-en.png" alt="vw 11 en" height="100%"></div>
+                <div class="title">Figura 11. Seguimos al asistente - 1</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Debemos elegir el formato del archivo de entrada.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Formato <code>VOSviewer</code>: aquí podemos cargar un archivo hecho de párrafos:</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-13-en.png" alt="vw 13 en" height="100%"></div>
+                <div class="title">Figura 12. Elegir el formato VOSviewer</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>VOSViewer tiene funcions bibliométricas, que permiten extraer abstracts directamente de
+                        entradas de MEDLINE (o Scopus, Web of Knowledge…​)</p>
+                </div>
+                <div class="paragraph">
+                    <p>Entonces para este ejemplo podemos usar el archivo que teniamos al inicio de este tutorial
+                        (<code>pubmed_medline.txt</code>) y elegir el formato <code>PubMed</code>:</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-14-en.png" alt="vw 14 en" height="100%"></div>
+                <div class="title">Figura 13. Elegir el formato PuMed</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Cargar un archivo en el formato PubMed / Medline permite un mejor control:</p>
+                </div>
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>Nos consulta si deseamos cargar abstracts, títulos, o ambos</p>
+                        </li>
+                        <li>
+                            <p>eliminará las declaraciones de derechos de autor por nosotros (como "Copyright @Elsevier
+                                2016") que a menudo contaminan el texto.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-15-en.png" alt="vw 15 en" height="100%"></div>
+                <div class="title">Figura 14. Elegir el formato PuMed</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>En la siguiente pantalla, como antes, pregunta si preferimos binary or full counting, y si
+                        tenemos un archivo thesaurus.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Debemos elegir una frecuencia mínima de un término (número de ocurrencias en total) para que sea
+                        incluida en el mapa:</p>
+                </div>
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-16-en.png" alt="vw 16 en" height="100%"></div>
+                <div class="title">Figura 15. Frecuencia mínima para que un término sea incluido</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>La siguiente pantalla nos invita a seleccionar los términos más "relevantes", con un parámetro
+                        puesto en un valor de default.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Aunque la definición de "relevancia" es difícil de explicar brevemente, su idea básica es que un
+                        término es más relevante cuanto más tiende a asociarse con palabras específicas, y no con todas
+                        las palabras por igual.</p>
+                </div>
+                <div class="paragraph">
+                    <p>Los desarrolladores de VOSviewer explican su enfoque <a
+                            href="https://arxiv.org/ftp/arxiv/papers/1109/1109.2058.pdf">aquí</a>.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-17-en.png" alt="vw 17 en" height="100%"></div>
+                <div class="title">Figura 16. Seleccionar las palabras más relevantes</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>La ultima pantalla del asistente recapitula en una tabla los términos que serán incluidos en el
+                        mapa, rankeado por relevancia.</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-18-en.png" alt="vw 18 en" height="100%"></div>
+                <div class="title">Figura 17. Tabla de recapitulación</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>El resultado:</p>
+                </div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-19-en.png" alt="vw 19 en" height="100%"></div>
+                <div class="title">Figura 18. Resultado - el mapa semántico</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h3>3. Importar una red (formato gml o pajek)</h3>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="paragraph">
+                    <p>Esta parte no se desarrollará en este tutorial ya que es directa: si tienes un archivo en formato
+                        gml o pajek, solo lo importas.</p>
+                </div>
+                <div class="imageblock stretch" style="text-align: center; height: 700px; width: 960px;"><img
+                        src="vw-20-en.png" alt="vw 20 en" height="100%"></div>
+                <div class="title">Figura 19. Importar una red</div>
+            </section>
+            <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <div class="ulist">
+                    <ul>
+                        <li>
+                            <p>El manual de VOSviewer se incluye como un archivo pdf cuando se descarga el
+                                software.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section id="_the_end" hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+                <h2>Fin!</h2>
+                <div class="paragraph">
+                    <p> <!-- Start of StatCounter Code for Default Guide -->
+                        <script type="text/javascript">
+                            var sc_project = 11271450;
+                            var sc_invisible = 1;
+                            var sc_security = "11271450";
+                            var scJsHost = (("https:" == document.location.protocol) ?
+                                "https://secure." : "http://www.");
+                            document.write("<sc" + "ript type='text/javascript' src='" +
+                                scJsHost +
+                                "statcounter.com/counter/counter.js'></" + "script>");
+                        </script>
+                        <script type="text/javascript" src="https://secure.statcounter.com/counter/counter.js"></script>
+                        <noscript>
+                            <div class="statcounter"><a title="site stats" href="http://statcounter.com/"
+                                    target="_blank"><img class="statcounter"
+                                        src="//c.statcounter.com/11271450/0/11271450/1/" alt="site
+    stats"></a></div>
+                        </noscript>
+                        <!-- End of StatCounter Code for Default Guide -->
+                    </p>
+                </div>
+            </section>
+        </div>
+        <div class="backgrounds">
+            <div class="slide-background title present" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+            <div class="slide-background future" style="display: none;"></div>
+        </div>
+        <div class="progress" style="display: block;"><span style="width: 0px;"></span></div>
+        <aside class="controls" style="display: block;">
+            <div class="navigate-left"></div>
+            <div class="navigate-right enabled"></div>
+            <div class="navigate-up"></div>
+            <div class="navigate-down"></div>
+        </aside>
+        <div class="slide-number"></div>
+        <div class="pause-overlay"></div>
+        <div id="aria-status-div" aria-live="polite" aria-atomic="true"
+            style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">A
+            tutorial for vosviewerlast modified: 2017-03-30
+            Clément Levallois</div>
+    </div>
+    <script src="head.min.js.descarga"></script>
+    <script src="reveal.js.descarga"></script>
+    <script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+        Reveal.initialize({
+            // Display controls in the bottom right corner
+            controls: true,
+            // Display a presentation progress bar
+            progress: true,
+            // Display the page number of the current slide
+            slideNumber: false,
+            // Push each slide change to the browser history
+            history: false,
+            // Enable keyboard shortcuts for navigation
+            keyboard: true,
+            // Enable the slide overview mode
+            overview: true,
+            // Vertical centering of slides
+            center: true,
+            // Enables touch navigation on devices with touch input
+            touch: true,
+            // Loop the presentation
+            loop: false,
+            // Change the presentation direction to be RTL
+            rtl: false,
+            // Turns fragments on and off globally
+            fragments: true,
+            // Flags if the presentation is running in an embedded mode,
+            // i.e. contained within a limited portion of the screen
+            embedded: false,
+            // Number of milliseconds between automatically proceeding to the
+            // next slide, disabled when set to 0, this value can be overwritten
+            // by using a data-autoslide attribute on your slides
+            autoSlide: 0,
+            // Stop auto-sliding after user input
+            autoSlideStoppable: true,
+            // Enable slide navigation via mouse wheel
+            mouseWheel: false,
+            // Hides the address bar on mobile devices
+            hideAddressBar: true,
+            // Opens links in an iframe preview overlay
+            previewLinks: false,
+            // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+            // NOTE setting the theme in the config no longer works in reveal.js 3.x
+            //theme: Reveal.getQueryHash().theme || 'white',
+            // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+            transition: Reveal.getQueryHash().transition || 'linear',
+            // Transition speed (e.g., default, fast, slow)
+            transitionSpeed: 'default',
+            // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+            backgroundTransition: 'fade',
+            // Number of slides away from the current that are visible
+            viewDistance: 3,
+            // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+            parallaxBackgroundImage: '',
+            // Parallax background size in CSS syntax (e.g., "2100px 900px")
+            parallaxBackgroundSize: '',
+
+            // The "normal" size of the presentation, aspect ratio will be preserved
+            // when the presentation is scaled to fit different resolutions. Can be
+            // specified using percentage units.
+            width: 960,
+            height: 700,
+
+            // Factor of the display size that should remain empty around the content
+            margin: 0.1,
+
+            // Bounds for smallest/largest possible scale to apply to content
+            minScale: 0.2,
+            maxScale: 10.0,
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'reveal.js-3.1.0/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'reveal.js-3.1.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'reveal.js-3.1.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+
+                { src: 'reveal.js-3.1.0/plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'reveal.js-3.1.0/plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+            ]
+        });</script>
+    <script type="text/javascript" src="zoom.js.descarga"></script>
+    <script type="text/javascript" src="notes.js.descarga"></script><iframe id="R1K0zNXo" frameborder="0"
+        src="translateSandbox.html" style="width: 0px; height: 0px; display: none;"></iframe>
+</body>
+
+</html>
